@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../project 01/bootstrap.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   <!-- l <link rel="stylesheet" href="../project 01/bootstrap.bundle.js"> -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="../project 01/food.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="../project 01/css/food.css">
+    <style>
+        @import url();
+*,
+*::after,
+*::before{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:active,
+:hover,
+:focus{
+    outline: 0 !important;
+    outline-offset: 0;
+}
+a,
+a:hover{
+    text-decoration: none;
+}
+a:hover{
+    color: var --primary-color !important;
+}
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+}
+/* variables defines */
+:root{
+    --primary-color: #ffc222 ;
+    --secondary-color: #00a149 ;
+    --white-color: #fff;
+    --text-color: #b0b0b0;
+    --black-color: #1e1d23;
+
+    --primary-font :'Roboto', sans-serif;
+    --secondary-font: 'Quicksand', sans-serif; 
+    
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: var(--primary-font) ;
+    font-size: 100%;
+    font-weight: 400;
+}
+/* Custom Scroll bar */
+::-webkit-scrollbar{
+    width: 0.625rem;
+}
+::-webkit-scrollbar-track{
+    background: var(--white-color);
+}
+::-webkit-scrollbar-thumb{
+    background: var(--secondary-color);
+}
+
+/* Custom Css Design */
+
+h1{
+    color: #fff;
+}
+h1 span{
+    color: var(--primary-color);
+}
+h2{
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: capitalize;
+    font-family: var(--secondary-font);
+    color: var(--secondary-color);
+    line-height: 3rem;
+}
+h4{
+    color: var(--secondary-color);
+    font-family: var(--secondary-font);
+    text-transform: capitalize;
+    font-size: 1.125rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+h5{
+    color: var(--black-color);
+    text-transform: capitalize;
+    font-family: var(--secondary-font);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+p{
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 400;
+    font-weight: 400;
+    line-height: 1.75rem;
+    letter-spacing: 1px;
+}
+
+.main-btn{
+    display: inline;
+    padding: 0.625rem 1.875rem;
+    line-height: 1.5625rem;
+    background-color: var(--primary-color);
+    border: 0.1875 solid var(--primary-color);
+    color: var(--black-color);
+    font-size: 0.9375;
+    font-weight: 600;
+    text-transform: capitalize;
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 10px -1px rgb(0 0 / 19%);
+    -webkit-transition: all .4s ease-out 0s;
+    -o-transition: all .4s ease-out 0s;
+    -moz-transition: all .4s ease-out 0s;
+    transition: all .4s ease-out 0s;
+
+}
+
+.main-btn:hover{
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.wrapper{
+    padding-top: 4.25rem;
+    padding-bottom: 4.25rem;
+}
+
+.text-content{
+    width: 70%;
+    margin: auto;
+}
+
+/* Header Design */
+
+.navigation-wrap{
+    position: fixed;
+    background-color: var(--white-color);
+    width: 100%;
+    left: 0%;
+    z-index: 1000;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.navigation-wrap .nav-item{
+    padding: 0 0.625rem;
+    transition: all 0.3s linear;
+}
+
+.navbar-toggler:focus{
+    outline: unset;
+    border: unset;
+    box-shadow: none;
+}
+
+.nav-link{
+    font-size: 0.9375rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: var(--black-color);
+    letter-spacing: 1px;
+}
+
+.nav-link:hover,
+.nav-link:active{
+    color: var(--primary-color) !important;
+}
+
+.navigation-wrap .main-btn{
+    padding: 0.3125rem 1.4375rem;
+    box-shadow: none;
+    margin-left: 0.625rem;
+}
+
+#navbarNav{
+    justify-content: right;
+}
+
+
+
+
+/* change navabar styling on scroll */
+
+.navigation-wrap.scroll-on{
+    position: fixed;
+    background-color: var(--white-color);
+    top: 0;
+    left: 0%;
+    width: 100%;
+    box-shadow: 0 0.125rem 1.75rem 0 rgb(0 0 0 0.09);
+    transition: all 0.5s ease-in-out 0s;
+
+
+}
+
+.navigation-wrap.scroll-on .nav-link{
+    color: var(--black-color);
+
+}
+.navigation-wrap.scroll-on .nav-link:hover,
+.navigation-wrap.scroll-on .nav-link:active{
+    color: var(--primary-color);
+}
+
+
+
+
+/* ================================
+        Top Banner
+================================         */
+
+.top-banner{
+    width: 100%;
+    background: url(images/bg/bg-1.jpg);
+    background-size: cover;
+    padding: 16.875rem 0 9.375rem;
+
+}
+
+.top-banner p{
+    color: var(--white-color);
+}
+
+/* =======================
+    Our Menu section
+======================= */
+
+.our-menu .card{
+    border: none;
+
+}
+
+.our-menu .link_category_product{
+    position: relative;
+    display: block;
+    z-index: 1;
+}
+
+.our-menu .link_category_product::before{
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px dotted var(--secondary-color);
+    z-index: -1;
+    transform: translateX(-50%) translateY(-50%) scale(0);
+    background: var(--primary-color);
+    -webkit-transition: all .4s ease;
+    -moz-transition: all .4s ease;
+    -ms-transition: all .4s ease;
+    -o-transition: all .4s ease;
+    transition: all .4s ease;
+}
+
+.card:hover .link_category_product::before{
+    transform: translateX(-50%) translateY(-50%) scale(1);
+}
+
+.our-menu .cat-title a{
+    text-align: center;
+    font-size: 0.8125rem;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 700;
+    color: var(--black-color);
+}
+
+.card:hover .cat-title a{
+    color: var(--primary-color);
+}
+
+/* ABout section 
+ */
+
+ .about-section {
+     background: var(--black-color);
+ }
+
+ .about-section .card,
+ .about-section .card img{
+    border-radius: 00.625rem;
+ }
+
+ .about-section .text-sec{
+     padding-left: 2rem;
+ }
+
+ /* Food type  */
+ .food-type{
+    padding-top: 3.25rem;
+ }
+
+ .food-type ul li {
+     font-size: 1rem;
+     color: var(--text-color);
+     line-height: 32px;
+     position: relative;
+     margin-left: 30px;
+
+ }
+
+ .food-type ul li::before{
+     position: absolute;
+     left: -2.1875rem;
+     color: var(--primary-color);
+     font-size: 1.25rem;
+     font-family: "Font awesome 5 free";
+     content: '\f00c';
+     display: inline-block;
+     padding-right: 3px;
+     vertical-align: middle;
+     font-weight: 900;
+}
+/* Explore Food 
+ */
+
+ .explore-food .card{
+     border: none;
+     background-color: transparent;
+     border-radius: 0.9375rem;
+
+ }
+
+ .explore-food .card img{
+     border-radius: 15px 15px 0 0;
+     object-fit: cover;
+
+ }
+
+ .explore-food .card span{
+     display: block;
+     font-size: 1.5rem;
+     font-weight: 700;
+     color: var(--primary-color);
+     padding-bottom: 1rem;
+     border-bottom: 0.0625rem solid #eee;
+
+ }
+
+ .explore-food p{
+     color: var(--text-color);
+     font-size: 14px;
+     line-height: 22px;
+ }
+
+ /* Testimonals design 
+  */
+
+  .testimonal-section {
+      background-color: var(--secondary-color);
+  }
+
+  .testimonal-section h2{
+      color: var(--white-color);
+
+  }
+
+  .testimonal-section carousel-item{
+
+    margin-top: 3rem;
+    padding: 10rem 1.325rem;
+    background-color: var(--black-color);
+    border-radius: 0.9375rem;
+    text-align: center;
+}
+ 
+.testimonal-section .carousel-item img{
+    max-width: 5rem;
+    border-radius: 50rem;
+    padding: 0.3125rem;
+
+}
+.testimonal-section .carousel-item p{
+    font-size: 1.125rem;
+    line-height: 1.2625;
+    font-weight: 300;
+    color: var(--white-color);
+    padding: 11% 0.625rem;
+
+}
+.testimonal-section .carousel-indicators{
+    bottom: 2.8125rem;
+}
+
+.testimonal-section .carousel-indicators button{
+    width: 15px;
+    height: 15px;
+    outline: none;
+    border-radius: 50%;
+    border: none;
+    margin-right: 1rem;
+    opacity: 0.2;
+
+}
+
+.testimonal-section .carousel-indicators button:active{
+    opacity: 1;
+}
+
+/* Footer Design  */
+
+.footer{
+    background: var(--black-color);
+}
+
+.footer .footer-social a i{
+    font-size: 1.5rem;
+    color: var(--white-color);
+    padding: 0rem;
+    
+}
+
+.footer .footer-social a:hover{
+    color: var(--primary-color);
+}
+
+.newsletter .fomr-control {
+
+    height: 3.225rem;
+    padding: 0 1.25rem;
+    font-size: 0.875rem;
+    width: 100%;
+    border-radius: 0%;
+    background: transparent;
+    border: 0.1875 solid var(--white-color);
+    color: var(--black-color);
+    font-weight: 700;
+
+}
+
+.newsletter .main-btn{
+    height: 3.225rem;
+    padding: 0 1.25rem;
+    font-size: 0.875rem;
+    border-radius: 0%;
+    background-color: var(--primary-color);
+    border: 0.1875 solid var(--white-color);
+    color: var(--black-color);
+
+
+}
+
+.newsletter:hover .fomr-control{
+    border: 0.1875rem solid var(--primary-color);
+    color: var(--black-color);
+}
+
+.newsletter:hover .main-btn{
+    background: var(--primary-color);
+    border: 0.1875 solid var(--secondary-color);
+}
+
+.newsletter .fomr-control:hover,
+.newsletter .fomr-control:focus{
+    outline: none;
+    box-shadow: none;
+    border-color: var(--primary-color);
+
+}
+    </style>
+    <title>Document</title>
+</head>
+<body  data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100"> 
+
+    <!-- header design -->
+    <header>
+        <nav class="navbar navbar-expand-lg navigation-wrap">
+            <div class="container">
+              <a class="navbar-brand" href="#">
+                  <img src="../project 01/images/logo.png" alt="">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- <span class="navbar-toggler-icon"></span> -->
+                <i class="fas fa-stream navbar-toggler-icon"></i>
+              </button>
+              <div class="collapse navbar-collapse  justify-content-right" id="navbarNav">
+                <ul class="navbar-nav ms-2 mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#home">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#explore-food">Explore Foods</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#testimonal">Reveiws</a>
+                  </li>
+                  <li>
+                      <button class="main-btn">1200 345 123</button>
+                  </li>
+                 
+                  
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <!-- Section 1 Banner -->
+    <section id="home">
+        <div class="container-fluid px-0 top-banner" style="background: url(images/bg/bg-1.jpg);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6">
+                        <h1>UNLIMITED <br> MEDIUM <span>PIZZAS</span></h1>
+                        <h2>Medium 2-topping* pizza</h2>
+                        <p>*Additional Charge for premium topping. Minimum of 2 required</p>
+                        <div class="mt-4">
+                            <button class="main-btn">Order Now <i class="fas fa-shopping-basket ps-3"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Section 2 Our Menu -->
+    <section class="our-menu p-4">
+        <div class="container text-center">
+            <h2 class="pb-4">Our Menu</h2>
+            <div class="row">
+                <div class="col-6 col-sm-2 mb-4 mb-lg-0">
+                    <div class="card">
+                        <div class="cat-image">
+                            <a class="link_category_product" href="">
+                                <img src="../project 01/images/img/category1.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="cat-title">
+                            <a href="">Pizza</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-2 mb-4 mb-lg-0">
+                    <div class="card">
+                        <div class="cat-image">
+                            <a class="link_category_product" href="">
+                                <img src="../project 01/images/img/category2.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="cat-title">
+                            <a href="">Sauces</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-2 mb-4 mb-lg-0">
+                    <div class="card">
+                        <div class="cat-image">
+                            <a class="link_category_product" href="">
+                                <img src="../project 01/images/img/category3.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="cat-title">
+                            <a href="">Combo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-2 mb-4 mb-lg-0">
+                    <div class="card">
+                        <div class="cat-image">
+                            <a class="link_category_product" href="">
+                                <img src="../project 01/images/img/category4.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="cat-title">
+                            <a href="">Kids Menus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-2 mb-4 mb-lg-0">
+                    <div class="card">
+                        <div class="cat-image">
+                            <a class="link_category_product" href="">
+                                <img src="../project 01/images/img/category5.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="cat-title">
+                            <a href="">Chickens</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-2 mb-4 mb-lg-0">
+                    <div class="card">
+                        <div class="cat-image">
+                            <a class="link_category_product" href="">
+                                <img src="../project 01/images/img/category6.png" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="cat-title">
+                            <a href="">Box Meals</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Section 3 About  -->
+
+    <section id="about">
+        <div class="about-section wrapper">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 col-md-12 mb-5 mb-lg-0">
+                        <div class="card border-0">
+                            <img src="../project 01/images/img/img-1.png" alt="">
+
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12 text-sec">
+                        <h2>We provide over selves on making real food from ingredients</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure illo eos rem cumque iste doloremque alias ex? Facilis, deserunt necessitatibus?</p>
+                        <button class="main-btn mt-4">Learn More</button>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container food-type">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 col-md-12 mb-lg-0 mb-5">
+                        <h2>We make every thing by hand with the possible ingredients</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi repellat eaque optio ad vitae sequi numquam rem nobis consequuntur dolorem.</p>
+                        <ul class="list-unstyled py-3">
+                            <li>Lorem ipsum dolor sit amet consectetu</li>
+                            <li>Lorem ipsum dolor sit amet consectetu</li>
+                            <li>Lorem ipsum dolor sit amet consectetu</li>
+                            <li>Lorem ipsum dolor sit amet consectetu</li>
+                        </ul>
+                        <button class="main-btn mt-4">Learn More</button>
+                    </div>
+                    <div class="col-lg-7 col-md-5">
+                        <div class="card border-0">
+                            <img src="../project 01/images/img/img-2.png" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4 Explore Food -->
+    <section id="explore-food">
+        <div class="explore-food wrapper">
+            <div class="container">
+               <div class="row">
+                        <div class="col-sm-12">
+                            <div class="text-content text-center">
+                                <h2>Explore Our Food</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla vero mollitia vel eligendi veritatis facere ipsam obcaecati rem amet? Dolore voluptate reprehenderit commodi vero voluptatum tenetur quia ratione quos similique?</p>
+                            </div>
+                         </div>
+                 </div>
+
+                 <div class="row pt-5">
+                    <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
+                        <div class="card border">
+                            <img src="../project 01/images/img/img-3.jpg" class="img-fluid" alt="">
+                            <div class="p-3">
+                                <h5>10 REASONS TO DO A DIGITAL DETOX CHALLANGE</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem unde accusamus earum, quis ipsam cupiditate.</p>
+                                <button class="mt-2 main-btn">Read More</button>
+                            </div>
+                        </div>
+
+                      
+
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
+                        <div class="card border">
+                            <img src="../project 01/images/img/img-4.jpg" class="img-fluid" alt="">
+                            <div class="p-3">
+                                <h5>THE ULTIMATE HANGOVER BURGER : Egg An A Whole Brger Grilled Chesse</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem unde accusamus earum, quis ipsam cupiditate.</p>
+                                <button class="mt-2 main-btn">Read More</button>
+                            </div>
+                        </div>
+
+                      
+
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-lg-0 mb-5">
+                        <div class="card border">
+                            <img src="../project 01/images/img/img-5.jpg" class="img-fluid" alt="">
+                            <div class="p-3">
+                                <h5>Traditional SOft Pretzels With Sweet Beer Cheese</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem unde accusamus earum, quis ipsam cupiditate.</p>
+                                <button class="mt-2 main-btn">Read More</button>
+                            </div>
+                        </div>
+
+                      
+
+                    </div>
+                 </div>
+
+             </div>
+
+        </div>
+    </section>
+
+    <!-- section 5 Testimnals -->
+    <section id="testimonal">
+        <div class="wrapper testimonal-section">
+            <div class="container text-center">
+               <div class="text-center pb-4">
+                <h2>Testimonals</h2>
+               </div>
+
+               <div class="row">
+                   <div class="col-sm-12 col-lg-10 offset-lg-1">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner ">
+                          <div class="carousel-item oneofone active">
+                            <img src="../project 01/images/review/review-1.jpg" class="img-fluid" alt="...">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, architecto!</p>
+                            <h5>Muhammad Bilal - Full Stack Devoleper</h5>
+                          </div>
+                          <div class="carousel-item oneofone">
+                            <img src="../project 01/images/review/WhatsApp Image 2022-06-10 at 10.34.03 AM.jpeg" class="img-fluid" alt="...">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, architecto!</p>
+                            <h5> Sarkar Maha  - Full Stack Devoleper</h5>
+                          </div>
+                          <div class="carousel-item oneofone">
+                            <img src="../project 01/images/review/review-1.jpg" class="img-fluid" alt="...">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, architecto!</p>
+                            <h5>Bilal Musa - Full Stack Devoleper</h5>
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+
+                   </div>
+               </div>
+
+            </div>
+        </div>
+    </section>
+
+
+        <!-- Section 6 Footer  -->
+
+    <footer id="footer">
+        <div class="footer pt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                       <div class="footer-social pb-4 text-center">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-dribble"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                       </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <form class="newsletter">
+                            <div class="d-flex">
+                                <input class="form-control" placeholder="Email Address Here" type="email">
+                                <button class="main-btn " type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="footer-copy">
+                            <div class="copy-right text-center pt-5">
+                                <p class="text-light">@ 2022. PIZZA . All rights reserved</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
